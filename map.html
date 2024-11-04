@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Peta Interaktif Imuy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        /* Gaya untuk peta */
+        #map {
+            height: 400px; /* Tinggi peta */
+            width: 100%; /* Lebar peta */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Peta Lokasi Favorit: Rumahku</h2>
+        <div id="map"></div>
+        <a href="index.html">Kembali ke Beranda</a>
+    </div>
+    <script>
+        // Inisialisasi peta
+        var map = L.map('map').setView([-6.992779585875125, 109.13984402516488], 13); // Ganti koordinat dengan lokasi rumahmu
+
+        // Tambahkan layer peta dari OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Tambahkan marker untuk lokasi rumah
+        var marker = L.marker([-6.992779585875125, 109.13984402516488]).addTo(map); // Ganti koordinat dengan lokasi rumahmu
+        marker.bindPopup("<b>Ini Rumahku!</b>").openPopup(); // Pesan yang muncul saat marker diklik
+    </script>
+</body>
+</html>
